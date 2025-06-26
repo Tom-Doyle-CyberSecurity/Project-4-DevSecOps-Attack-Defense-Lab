@@ -64,3 +64,10 @@ resource "docker_container" "trivy" {
     name = "trivy"
     image = docker_image.trivy.name
 }
+
+module "docker_host {
+    source = "./modules/docker_host"
+    instance_type = var.instance_type
+    juice_shop_image = var.juice_shop_image
+    zap_image = var.zap_image
+}

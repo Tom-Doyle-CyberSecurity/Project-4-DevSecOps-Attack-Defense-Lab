@@ -20,6 +20,10 @@ variable "trivy_image" {
     default = "aquasec/trivy"
 }
 
+variable "instance_type" {}
+variable "juice_shop_image" {}
+variable "zap_image" {}
+
 ## Define ports 
 
 variable "juice_shop_port" {
