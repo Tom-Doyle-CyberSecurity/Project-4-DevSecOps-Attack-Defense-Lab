@@ -20,7 +20,7 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 resource "aws_instance" "docker_host" {
-    ami = "ami-078772dab3242ee11"
+    ami = var.ami_id
     instance_type = "t2.micro"
     key_name = var.key_name
     subnet_id = var.subnet_id

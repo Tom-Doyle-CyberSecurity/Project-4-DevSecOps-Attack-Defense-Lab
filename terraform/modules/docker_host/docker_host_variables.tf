@@ -8,15 +8,18 @@ variable "my_ip" {
     type = string
 }
 
-variable "ami_id" {
-    description = "AMI ID for Docker Host (e.g, Amazon linux 2)"
+variable "subnet_id" {
+    description = "The ID of of the subnet to launch the Docker Host EC2 instance in"
     type = string
 }
 
-resource "aws_security_group" "allow_ssh" {
-    vpc_id = var.vpc_id
+variable "vpc_id" {
+    description = "The ID of the VPC to place the security group in"
+    type = string
 }
 
-resource "aws_instance" "docker_host" {
-    subnet_id = var.subnet_id
+variable "ami_id" {
+    description = "AMI ID to use for the Docker Host EC2 instance (Amzon Linux 2)
+    type = string
 }
+
