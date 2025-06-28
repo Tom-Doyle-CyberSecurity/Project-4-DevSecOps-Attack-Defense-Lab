@@ -19,7 +19,7 @@ variable "vpc_id" {
 }
 
 variable "ami_id" {
-    description = "AMI ID to use for the Docker Host EC2 instance (Amzon Linux 2)
+    description = "AMI ID to use for the Docker Host EC2 instance (Amzon Linux 2)"
     type = string
 }
 
