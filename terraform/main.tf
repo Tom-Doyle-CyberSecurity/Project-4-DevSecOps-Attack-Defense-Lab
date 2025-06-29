@@ -15,9 +15,9 @@ provider "aws" {
 
 module "docker_host" {
     source = "./modules/docker_host"
+    ami_id = var.ami_id
     key_name = var.key_name
-    my_ip = var.my_ip
     subnet_id = var.subnet_id
     vpc_id = var.vpc_id
-    ami_id = var.ami_id
+    my_ip = var.my_ip
 }
