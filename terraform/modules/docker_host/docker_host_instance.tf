@@ -1,12 +1,25 @@
 resource "aws_security_group" "allow_ssh" {
-    name = "allow_ssh"
-    description = "Allow SSH from specific IP"
+    name = "allow_ssh_juice_zap"
+    description = "Allow SSH, Juice Shop, and ZAP traffic"
     vpc_id = var.vpc_id
 
     ingress {
-        description = "SSH"
         from_port = 22
         to_port = 22
+        protocol = "tcp"
+        cidr_blocks = [var.my_ip]
+    }
+
+    ingress {
+        from_port = 3000
+        to_port = 3000
+        protocol = "tcp"
+        cidr_blocks = [var.my_ip]
+    }
+
+    ingress {
+        from_port = 8080
+        to_port = 8080
         protocol = "tcp"
         cidr_blocks = [var.my_ip]
     }
@@ -30,10 +43,11 @@ resource "aws_instance" "docker_host" {
     user_data = <<-EOF
         #!/bin/bash
         yum update -y
-        yum install -y docker git
+        amazon-linux-extras install docker -y
         systemctl enable docker
-        systemctl start docker 
-        usermod -aG docker ec2-user
+        systemctl start docker
+        docker run -d -p 3000:3000 bkimminich/juice_shop
+        docker run -d -p 8080:8080 owasp/zap2docker-stable
     EOF
 
     tags = {
