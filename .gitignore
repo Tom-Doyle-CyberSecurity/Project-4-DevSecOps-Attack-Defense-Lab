@@ -1,0 +1,15 @@
+# .gitignore to secure variables
+terraform.tfvars
+
+# Terraform-generated files
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+#SSH/Key files
+*.pem
+*.Key
+
+#VS Code + OS clutter
+.vscode/
+.DS_Store
