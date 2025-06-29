@@ -1,4 +1,4 @@
-# .gitignore to secure variables
+# .gitignore for irrelevant info
 terraform.tfvars
 
 # Terraform-generated files
