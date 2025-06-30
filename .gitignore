@@ -13,3 +13,6 @@ terraform.tfvars
 #VS Code + OS clutter
 .vscode/
 .DS_Store
+
+# .pem files
+*.pem
